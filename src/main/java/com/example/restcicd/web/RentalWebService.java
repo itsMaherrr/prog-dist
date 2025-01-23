@@ -1,7 +1,7 @@
 package com.example.restcicd.web;
 
-import com.example.rentalService.data.Car;
-import com.example.rentalService.data.Dates;
+import com.example.restcicd.data.Car;
+import com.example.restcicd.data.Dates;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.web.bind.annotation.*;
@@ -18,6 +18,8 @@ public class RentalWebService {
 
     public RentalWebService() {
         Car car = new Car("11AA22", 2000);
+        cars.add(car);
+        car = new Car("Porsche", 2000);
         cars.add(car);
     }
 
