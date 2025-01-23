@@ -16,4 +16,4 @@ jobs:
         working-directory: src
         run: |
           export SHELL=/bin/bash
-          ./gradlew build
+          ../../gradlew build
