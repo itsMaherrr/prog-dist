@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: rentalcars
+  labels:
+    app: rentalcars
+    version: '0.1'
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: rentalcars
+  template:
+    metadata:
+      name: rentalcars
+      labels:
+        app: rentalcars
+    spec:
+      containers:
+        - name: rentalcars
+          image: itsmaherrr/prog-dist
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+      restartPolicy: Always
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  creationTimestamp: null
+  labels:
+    app: rentalcars
+  name: rentalcars
+spec:
+  ports:
+    - port: 80
+      protocol: TCP
+      targetPort: 8080
+      name: http
+  selector:
+    app: rentalcars
+  type: LoadBalancer
+status:
+  loadBalancer: {}
